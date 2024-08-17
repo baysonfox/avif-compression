@@ -35,7 +35,7 @@ for file in video_files:
             preset=10,
             crf=40,
             threads=10,
-            **{"svtav1-params":"input-depth=10:tune=3:enable-qm=1:qm-min=0:enable-dlf=2:sc-pix-format=yuv420p:keyint={}:tile-rols={}:tile-columns={}".format(keyint, rows, columns)}
+            **{"svtav1-params":"input-depth=10:tune=3:enable-qm=1:qm-min=0:enable-dlf=2:sc-pix-format=yuv420p:keyint={}:tile-rows={}:tile-columns={}".format(keyint, rows, columns)}
         )
         .run(overwrite_output=True)
     )
