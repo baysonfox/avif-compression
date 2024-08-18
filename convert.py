@@ -35,7 +35,7 @@ for file in video_files:
             preset=10,
             crf=40,
             threads=10,
-            **{"svtav1-params":"input-depth=10:tune=3:enable-qm=1:qm-min=0:enable-dlf=2:sc-pix-format=yuv420p:keyint={}:tile-rows={}:tile-columns={}".format(keyint, rows, columns)}
+            **{"svtav1-params":"input-depth=10:tune=3:enable-qm=1:qm-min=0:enable-dlf=2:keyint={}:tile-rows={}:tile-columns={}".format(keyint, rows, columns)}
         )
         .run(overwrite_output=True)
     )
@@ -48,15 +48,14 @@ for file in image_files:
         avifenc \
         --min 0 --max 63 \
         -a enable-chroma-deltaq=1 \
+        -a enable-qm=0 \
         --autotiling \
         -a quant-b-adapt=1 \
         -a sb-size=64 \
         -a tune=ssim \
         -a deltaq-mode=2 \
-        -a row-mt=0 \
         -a cpu-used=4 \
         -a tune-content=psy \
-        -a sb-size=dynamic \
         --jobs 8 -s 3 \
         -d 10 \
         {} {}
